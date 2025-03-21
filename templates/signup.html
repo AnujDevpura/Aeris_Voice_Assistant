@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Dark Theme</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="logo">Create Account</h1>
+            
+            <div class="social-login">
+                <button class="social-btn" title="Google">G</button>
+                <button class="social-btn" title="Facebook">f</button>
+                <button class="social-btn" title="LinkedIn">in</button>
+                <button class="social-btn" title="Twitter">t</button>
+                <button class="social-btn" title="Apple">a</button>
+            </div>
+            
+            <div class="or-divider">or</div>
+            
+            <form id="signupForm" action="{{ url_for('signup') }}" method="post">
+                <div class="name-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+                    </div>
+                </div>
+                
+                <div class="terms-check">
+                    <input type="checkbox" id="termsCheck" name="termsCheck" required>
+                    <label for="termsCheck">I agree to the <a href="#">Terms & Conditions</a></label>
+                </div>
+                
+                <button type="submit" class="btn-primary">Create Account</button>
+                
+                <div class="login-link">
+                    Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+                </div>
+            </form>
+            
+            <div class="theme-toggle">
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+        }
+    </script>
+</body>
+</html>

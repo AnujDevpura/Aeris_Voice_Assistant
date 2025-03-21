@@ -1,0 +1,26 @@
+# Core dependencies
+python-dotenv==1.0.0
+requests==2.31.0
+pathlib==1.0.1
+
+# Google Gemini API
+google-generativeai==0.3.1
+
+# Audio processing
+SpeechRecognition==3.10.0
+soundfile==0.12.1
+pydub==0.25.1
+
+# Web framework (assuming Flask for the application)
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Testing
+pytest==7.4.2
+
+# requirements.txt
+flask==2.3.3
+python-dotenv==1.0.0
+flask-limiter==3.5.0
+werkzeug==2.3.7
+google-generativeai==0.3.1

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AI Voice Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="logo">Login</h1>
+            
+            <div class="social-login">
+                <button type="button" class="social-btn" title="Google" onclick="socialLogin('google')">G</button>
+                <button type="button" class="social-btn" title="Facebook">f</button>
+                <button type="button" class="social-btn" title="LinkedIn">in</button>
+                <button type="button" class="social-btn" title="Twitter">t</button>
+                <button type="button" class="social-btn" title="Apple" onclick="socialLogin('apple')">a</button>
+            </div>
+            
+            <div class="or-divider">or</div>
+            
+            {% if error %}
+            <div class="alert-message">{{ error }}</div>
+            {% endif %}
+            
+            <form id="loginForm" action="{{ url_for('login') }}" method="post">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+                    </div>
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember Me</label>
+                </div>
+                
+                <button type="submit" class="btn-primary">Log In</button>
+                
+                <div class="forgot-password-row">
+                    <span>Forgot your password?</span>
+                    <a href="{{ url_for('reset_password_route') }}" class="forgot-password">Reset Password</a>
+                </div>
+                
+                <div class="create-account">
+                    Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a>
+                </div>
+            </form>
+            
+            <div class="theme-toggle">
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // You can add form validation here if needed
+            // If you want to handle the form submission via AJAX instead of regular form submission
+            // you would add that logic here and prevent the default form submission
+        });
+    </script>
+</body>
+</html>

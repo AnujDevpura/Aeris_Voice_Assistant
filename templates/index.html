@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AERIS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>AERIS</h1>
+            <p class="lead">Speak or type your message to get a response from your favourite Character</p>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Character Selection</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="character-grid" class="row character-container">
+                            <!-- Character boxes will be dynamically populated here -->
+                        </div>
+                        
+                        <!-- Language selection is now handled per character -->
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Voice Input</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button id="startRecording" class="btn btn-primary">Start Recording</button>
+                            <button id="stopRecording" class="btn btn-danger" disabled>Stop Recording</button>
+                        </div>
+                        <div class="mt-3">
+                            <div class="progress" style="height: 20px;">
+                                <div id="recordingProgress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Text Input</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="sourceLanguage">Source Language:</label>
+                            <select id="sourceLanguage" class="form-select">
+                                <!-- Will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="textInput">Your Message:</label>
+                            <textarea id="textInput" class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button id="sendText" class="btn btn-success">Send Text</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Response</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="responseText" class="mb-3 p-3 bg-light rounded">
+                            <p class="text-muted">Your response will appear here...</p>
+                        </div>
+                        <div id="audioPlayer" class="text-center" style="display: none;">
+                            <audio id="audioResponse" controls></audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/recorder-js@1.0.7/dist/recorder.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice-app.js') }}"></script>
+    <!-- Include in your HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorder.js/1.0.1/recorder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.js"></script>
+</body>
+</html>
